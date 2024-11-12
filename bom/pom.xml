@@ -21,7 +21,22 @@
         <dependencies>
             <dependency>
                 <groupId>cn.com.nadav</groupId>
+                <artifactId>sms-codec-cmpp</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.nadav</groupId>
                 <artifactId>sms-codec-sgip</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.nadav</groupId>
+                <artifactId>sms-codec-smpp</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.nadav</groupId>
+                <artifactId>sms-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
