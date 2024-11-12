@@ -1,17 +1,99 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
-
-# Eclipse m2e generated files
-# Eclipse Core
+# Eclipse project files
 .project
-# JDT-specific (Eclipse Java Development Tools)
 .classpath
+.settings
+bin
+.springBeans
+spring-*/src/main/java/META-INF/MANIFEST.MF
+
+# IntelliJ IDEA project files and directories
+*.iml
+*.ipr
+*.iws
+.idea/
+.shelf/
+.idea
+out
+test-output
+atlassian-ide-plugin.xml
+
+# Geany project file
+.geany
+
+# KDevelop project file and directory
+.kdev4/
+*.kdev4
+
+# Build targets
+/target
+*/target
+
+# Report directories
+/reports
+*/reports
+
+# Mac-specific directory that no other operating system needs.
+.DS_Store
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
+
+# JVM dumps
+*.hprof.xz
+*.threads
+
+dependency-reduced-pom.xml
+
+*/.unison.*
+
+# exclude mainframer files
+mainframer
+.mainframer
+
+# exclude docker-sync stuff
+.docker-sync
+*/.docker-sync
+
+# exclude vscode files
+.vscode/
+*.factorypath
+
+# exclude file created by the flatten plugin
+.flattened-pom.xml
+.java-version
+
+
+# Miscellaneous
+*.java.hsp
+*.sonarj
+*.sw*
+build.sh
+integration-repo
+ivy-cache
+argfile*
+activemq-data/
+classes/
+
+# Log files
+jxl.log
+jmx.log
+derby.log
+
+# Gradle artifacts
+.gradle
+.gradletasknamecache
+/build
+buildSrc/build
+/integration-tests/build
+/src/asciidoc/build
+
+# Maven artifacts
+pom.xml
+/target/
+
+
+cached-antora-playbook.yml
+
+node_modules
+

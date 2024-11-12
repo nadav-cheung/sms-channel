@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.com.nadav</groupId>
+    <artifactId>sms-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0.Final-SNAPSHOT</version>
+
+    <name>Sms</name>
+    <url>https://nadav.com.cn/</url>
+    <description>
+
+    </description>
+
+
+    <organization>
+        <name>The Sms Protocol Project</name>
+        <url>https://nadav.com.cn/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <inceptionYear>2014</inceptionYear>
+
+
+    <scm>
+        <url>https://github.com/netty/netty</url>
+        <connection>scm:git:git://github.com/netty/netty.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/netty/netty.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>张楠</id>
+            <name>The Sms Protocol Project Contributors</name>
+            <email>nadav.cheung@gmail.com</email>
+            <url>https://netty.io/</url>
+            <organization>The Sms Protocol Project</organization>
+            <organizationUrl>https://nadav.com.cn/</organizationUrl>
+        </developer>
+    </developers>
+
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <logging.logLevel>debug</logging.logLevel>
+        <skipTests>false</skipTests>
+    </properties>
+
+
+    <modules>
+        <module>common</module>
+        <module>codec-sgip</module>
+        <module>codec-cmpp</module>
+        <module>codec-smpp</module>
+        <module>codec-smgp</module>
+        <module>bom</module>
+    </modules>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-parent</artifactId>
+                <version>4.1.115.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>
