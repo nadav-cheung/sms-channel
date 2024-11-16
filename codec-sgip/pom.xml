@@ -20,5 +20,11 @@
         <javaModuleName>cn.com.nadav.codec.sgip</javaModuleName>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

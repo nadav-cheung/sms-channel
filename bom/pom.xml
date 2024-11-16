@@ -16,32 +16,29 @@
 
     <name>Sms/BOM</name>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.com.nadav</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>sms-codec-cmpp</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.com.nadav</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>sms-codec-sgip</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.com.nadav</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>sms-codec-smpp</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.com.nadav</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>sms-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
 
 </project>

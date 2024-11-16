@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>cn.com.nadav</groupId>
     <artifactId>sms-parent</artifactId>
     <packaging>pom</packaging>
@@ -11,6 +12,7 @@
 
     <name>Sms</name>
     <url>https://nadav.com.cn/</url>
+
     <description>
 
     </description>
@@ -73,13 +75,16 @@
         <dependencies>
             <dependency>
                 <groupId>io.netty</groupId>
-                <artifactId>netty-parent</artifactId>
+                <artifactId>netty-bom</artifactId>
                 <version>4.1.115.Final</version>
                 <type>pom</type>
-                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec</artifactId>
+                <version>4.1.115.Final</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
 </project>
