@@ -1,10 +1,11 @@
-package cn.com.nadav.sms.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufHolder;
+import io.netty.buffer.DefaultByteBufHolder;
 import io.netty.handler.codec.DecoderResult;
 
 public abstract class AbstractSgipContent implements SgipContent {
-
 
     private final ByteBuf content;
 
@@ -56,4 +57,33 @@ public abstract class AbstractSgipContent implements SgipContent {
     }
 
 
+    @Override
+    public ByteBufHolder copy() {
+        return replace(content.copy());
+    }
+
+    @Override
+    public ByteBufHolder duplicate() {
+        return replace(content.duplicate());
+    }
+
+    @Override
+    public ByteBufHolder retainedDuplicate() {
+        return replace(content.retainedDuplicate());
+    }
+
+    @Override
+    public ByteBufHolder replace(ByteBuf content) {
+        return new DefaultByteBufHolder(content);
+    }
+
+    @Override
+    public ByteBufHolder retain(int increment) {
+        return replace(content.retain());
+    }
+
+    @Override
+    public ByteBufHolder touch(Object hint) {
+        return replace(content.touch());
+    }
 }

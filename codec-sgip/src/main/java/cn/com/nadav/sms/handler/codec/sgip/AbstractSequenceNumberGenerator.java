@@ -1,4 +1,4 @@
-package cn.com.nadav.sms.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
