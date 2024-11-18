@@ -1,43 +1,49 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.handler.codec.DecoderResult;
+
 public abstract class DefaultSgipMessage implements SgipMessage {
+
+    private static final DecoderResult decoderResult = DecoderResult.SUCCESS;
+
+    /**
+     * A packet which is send or receive.
+     */
+    private ByteBuf content;
 
     private SgipHeader header;
 
     private SgipVersion version;
 
 
-    public DefaultSgipMessage() {
-        this(SgipVersion.SGIP_1_3);
-    }
-
-    public DefaultSgipMessage(SgipVersion version) {
-        this(version, SgipHeaderFactory.headerFactory());
-    }
-
-    public DefaultSgipMessage(SgipVersion version, SgipHeader header) {
+    public DefaultSgipMessage(SgipHeader header, SgipVersion version, ByteBuf content) {
         this.header = header;
         this.version = version;
+        this.content = content;
     }
 
 
-    /**
-     * Creates a new instance.
-     */
-    protected DefaultSgipMessage(SgipVersion version, SgipHeaderFactory headerFactory) {
-        this(version, headerFactory.newHeader());
+    public DefaultSgipMessage(SgipHeader header) {
+        this(header, SgipVersion.SGIP_1_3, null);
     }
 
 
-    @Override
-    public SgipMessage setCommandId(int commandId) {
-        this.header.setCommandId(commandId);
-        return this;
+    public DefaultSgipMessage() {
+        this(SgipHeaderFactory.newEmptyHeader(), SgipVersion.SGIP_1_3, null);
     }
 
-    @Override
-    public int getCommandId() {
-        return this.header.getCommandId();
+
+    public ByteBuf getContent() {
+        return content;
+    }
+
+    public void setContent(ByteBuf content) {
+        this.content = content;
+    }
+
+    public SgipHeader getHeader() {
+        return header;
     }
 
     @Override
@@ -46,19 +52,11 @@ public abstract class DefaultSgipMessage implements SgipMessage {
         return this;
     }
 
-    @Override
-    public SgipHeader header() {
-        return this.header;
+    public SgipVersion getVersion() {
+        return version;
     }
 
-    @Override
-    public SgipMessage setProtocolVersion(SgipVersion protocolVersion) {
-        this.version = protocolVersion;
-        return this;
-    }
-
-    @Override
-    public SgipVersion protocolVersion() {
-        return this.version;
+    public void setVersion(SgipVersion version) {
+        this.version = version;
     }
 }

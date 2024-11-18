@@ -1,20 +1,47 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufHolder;
 import io.netty.handler.codec.DecoderResult;
 
-public class DefaultSgipRequest<T extends SgipContent> implements SgipRequest<T> {
+public class DefaultSgipRequest extends DefaultSgipMessage implements SgipRequest {
 
-    private SgipHeader header;
-
-    private T sgipContent;
+    private SgipMethod sgipMethod;
 
 
-    public DefaultSgipRequest() {
+    @Override
+    public SgipMethod getSgipMethod() {
+        return null;
     }
 
     @Override
-    public T sgipContent() {
-        return sgipContent;
+    public SgipContent sgipContent() {
+        return null;
+    }
+
+    @Override
+    public Object attachment() {
+        return null;
+    }
+
+    @Override
+    public void setAttachment(Object attachment) {
+
+    }
+
+    @Override
+    public int getCommandId() {
+        return 0;
+    }
+
+    @Override
+    public SgipMessage setCommandId(int commandId) {
+        return null;
+    }
+
+    @Override
+    public SgipMessage setSgipMethod(SgipMethod sgipMethod) {
+        return null;
     }
 
     @Override
@@ -33,18 +60,63 @@ public class DefaultSgipRequest<T extends SgipContent> implements SgipRequest<T>
     }
 
     @Override
-    public SgipMessage setHeader(SgipHeader header) {
+    public ByteBuf content() {
         return null;
     }
 
     @Override
-    public int getCommandId() {
+    public ByteBufHolder copy() {
+        return null;
+    }
+
+    @Override
+    public ByteBufHolder duplicate() {
+        return null;
+    }
+
+    @Override
+    public ByteBufHolder retainedDuplicate() {
+        return null;
+    }
+
+    @Override
+    public ByteBufHolder replace(ByteBuf content) {
+        return null;
+    }
+
+    @Override
+    public int refCnt() {
         return 0;
     }
 
     @Override
-    public SgipMessage setCommandId(int commandId) {
+    public ByteBufHolder retain() {
         return null;
+    }
+
+    @Override
+    public ByteBufHolder retain(int increment) {
+        return null;
+    }
+
+    @Override
+    public ByteBufHolder touch() {
+        return null;
+    }
+
+    @Override
+    public ByteBufHolder touch(Object hint) {
+        return null;
+    }
+
+    @Override
+    public boolean release() {
+        return false;
+    }
+
+    @Override
+    public boolean release(int decrement) {
+        return false;
     }
 
     @Override

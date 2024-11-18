@@ -1,5 +1,8 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+/**
+ * 保证分部署场景下唯一
+ */
 public class DatacenterMachineSequenceNumberGenerator extends AbstractSequenceNumberGenerator {
 
     private static final int MAX_MACHINE_ID = 15; // 机器 ID 最大值 (4 位)

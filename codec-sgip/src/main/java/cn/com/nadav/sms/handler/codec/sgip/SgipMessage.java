@@ -1,8 +1,9 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+import io.netty.buffer.ByteBufHolder;
 import io.netty.handler.codec.DecoderResultProvider;
 
-public interface SgipMessage extends DecoderResultProvider {
+public interface SgipMessage extends DecoderResultProvider, ByteBufHolder {
 
     SgipVersion protocolVersion();
 
@@ -12,13 +13,6 @@ public interface SgipMessage extends DecoderResultProvider {
 
     SgipMessage setHeader(SgipHeader header);
 
-    int getCommandId();
-
-    SgipMessage setCommandId(int commandId);
-
-    Object attachment();
-
-    void setAttachment(Object attachment);
-
+    SgipContent sgipContent();
 
 }

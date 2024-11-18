@@ -72,6 +72,7 @@ public abstract class AbstractSequenceNumberGenerator implements SequenceNumberG
                     try {
                         TimeUnit.MILLISECONDS.sleep(1); // 等待 1 毫秒
                     } catch (InterruptedException e) {
+                        // ignore
                         Thread.currentThread().interrupt();
                     }
                 }
@@ -82,22 +83,23 @@ public abstract class AbstractSequenceNumberGenerator implements SequenceNumberG
     /**
      * 构造消息序号
      */
-    private SgipSequenceNumber createSequence(SequenceState state, int sequenceId) {
+    protected SgipSequenceNumber createSequence(SequenceState state, int sequenceId) {
         int timestamp = Integer.parseInt(state.timestamp);
         return new DefaultSgipSequenceNumber(nodeId, timestamp, sequenceId);
     }
 
     /**
+     *还有更高效的实现
      * 获取当前时间戳，格式为 MMddHHmmss
      */
-    private String getCurrentTimestamp() {
+    protected String getCurrentTimestamp() {
         return LocalDateTime.now().format(FORMATTER);
     }
 
     /**
      * 内部类：保存时间戳和序列号状态
      */
-    private static class SequenceState {
+    public static class SequenceState {
         final String timestamp; // 时间戳
         final int sequenceId;   // 当前序列号
 
