@@ -8,9 +8,9 @@ import io.netty.handler.codec.DecoderException;
 public class SgipRequestUtil {
 
 
-    static SgipRequest decodeSgipRequest(SgipContentCodecFactory factory, ByteBuf buf, SgipRequestFactory supplier) throws Exception {
+    public static SgipRequest decodeSgipRequest(SgipContentCodecFactory factory, ByteBuf buf, SgipRequestFactory supplier) throws Exception {
         SgipRequest sgipRequest = newSgipMessageRequest(buf, supplier);
-        SgipContentCodec<? extends SgipContent> codec = factory.getCodec(sgipRequest.getSgipOpCode());
+        SgipContentCodec<SgipContent> codec = factory.getCodec(sgipRequest.getSgipOpCode());
         SgipContent sgipContent = codec.decodeSgipContent(buf);
         sgipRequest.setSgipContent(sgipContent);
         return sgipRequest;
@@ -22,12 +22,16 @@ public class SgipRequestUtil {
     }
 
 
+    public static void encodeSgipRequest(SgipContentCodecFactory factory, SgipRequest request, ByteBuf out) throws Exception {
+        encodeHeader(request.header(), out);
+        SgipOpCode sgipOpCode = request.getSgipOpCode();
+        SgipContentCodec<SgipContent> codec = factory.getCodec(sgipOpCode);
+        SgipContent sgipContent = request.sgipContent();
+        codec.encodeSgipContent(sgipContent,out);
+    }
+
 
     private static void encodeHeader(SgipHeader header, ByteBuf out) {
-
-        // 提取低32位
-        int lower32Bits = (int) (header.getMessageLength() & 0xFFFFFFFFL);
-        out.writeInt(lower32Bits);
         out.writeInt(header.getCommandId());
         out.writeInt(header.getSequenceNumber().getNodeId());
         out.writeInt(header.getSequenceNumber().getCurrentTimestamp());

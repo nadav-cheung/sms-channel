@@ -7,25 +7,31 @@ import java.util.Map;
 
 public class SgipContentCodecFactory {
 
+    private static final Map<SgipOpCode, SgipContentCodec<? extends SgipContent>> codecMap = new HashMap<>();
+
+    private static final SgipBindContentCodec SGIP_BIND_CONTENT_CODEC = new SgipBindContentCodec();
+
     private SgipContentCodecFactory() {
 
     }
 
-    public static final SgipContentCodecFactory INSTANCE = new SgipContentCodecFactory();
-
-
-    private static final SgipBindContentCodec SGIP_BIND_CONTENT_CODEC = new SgipBindContentCodec();
-
-
-    private static final Map<SgipOpCode, SgipContentCodec<? extends SgipContent>> codecMap = new HashMap<>();
-
     static {
-        codecMap.put(SgipOpCode.BIND, SGIP_BIND_CONTENT_CODEC);
+        registerCodec(SgipOpCode.BIND, SGIP_BIND_CONTENT_CODEC);
     }
 
 
-    public SgipContentCodec<? extends SgipContent> getCodec(SgipOpCode sgipOpCode) {
-        return codecMap.get(sgipOpCode);
+    // 提供类型安全的注册方法
+    public static <T extends SgipContent> void registerCodec(SgipOpCode opCode, SgipContentCodec<T> codec) {
+        codecMap.put(opCode, codec);
+    }
+
+
+    public static final SgipContentCodecFactory INSTANCE = new SgipContentCodecFactory();
+
+
+    @SuppressWarnings("unchecked")
+    public <T extends SgipContent> SgipContentCodec<T> getCodec(SgipOpCode sgipOpCode) {
+        return (SgipContentCodec<T>) codecMap.get(sgipOpCode);
     }
 
 }

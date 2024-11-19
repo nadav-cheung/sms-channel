@@ -8,6 +8,12 @@ public class DefaultSgipRequest extends DefaultSgipMessage implements SgipReques
 
     private Object attachment;
 
+
+    public DefaultSgipRequest(SgipHeader header) {
+        super(header);
+        this.sgipOpCode = SgipOpCode.valueOf(header.getCommandId());
+    }
+
     public DefaultSgipRequest(SgipHeader header, SgipOpCode sgipOpCode) {
         super(header);
         this.sgipOpCode = sgipOpCode;
