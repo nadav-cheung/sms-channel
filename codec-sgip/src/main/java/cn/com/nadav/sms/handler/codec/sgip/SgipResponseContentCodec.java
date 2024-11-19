@@ -1,0 +1,34 @@
+package cn.com.nadav.sms.handler.codec.sgip;
+
+import io.netty.buffer.ByteBuf;
+
+public class SgipResponseContentCodec implements SgipContentCodec<SgipResponseContent> {
+
+
+    @Override
+    public SgipResponseContent decodeSgipContent(ByteBuf in) throws Exception {
+
+        // 检查是否有足够数据
+
+        // 读取结果
+        int result = in.readByte();
+        // 读取 Reserve
+        String reserve = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.RESERVE_LENGTH);
+
+
+        // 构造 LoginMessage 对象并添加到输出列表
+        return new SgipResponseContent(result, reserve);
+
+    }
+
+    @Override
+    public void encodeSgipContent(SgipResponseContent msg, ByteBuf out) {
+        // 写入 Login Type
+        out.writeByte(msg.getResult());
+
+        // 写入 Reserve
+        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getReserve(), SgipConstants.RESERVE_LENGTH);
+    }
+
+
+}

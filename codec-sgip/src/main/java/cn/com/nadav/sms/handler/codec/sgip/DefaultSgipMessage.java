@@ -1,49 +1,52 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.DecoderResult;
 
-public abstract class DefaultSgipMessage implements SgipMessage {
+public class DefaultSgipMessage implements SgipMessage {
 
-    private static final DecoderResult decoderResult = DecoderResult.SUCCESS;
-
-    /**
-     * A packet which is send or receive.
-     */
-    private ByteBuf content;
-
-    private SgipHeader header;
+    private DecoderResult decoderResult = DecoderResult.SUCCESS;
 
     private SgipVersion version;
 
+    private SgipHeader header;
 
-    public DefaultSgipMessage(SgipHeader header, SgipVersion version, ByteBuf content) {
+    private SgipContent sgipContent;
+
+
+    public DefaultSgipMessage(SgipHeader header, SgipVersion version) {
         this.header = header;
         this.version = version;
-        this.content = content;
     }
 
 
     public DefaultSgipMessage(SgipHeader header) {
-        this(header, SgipVersion.SGIP_1_3, null);
+        this(header, SgipVersion.SGIP_1_3);
     }
 
 
     public DefaultSgipMessage() {
-        this(SgipHeaderFactory.newEmptyHeader(), SgipVersion.SGIP_1_3, null);
+        this(new DefaultSgipHeader(), SgipVersion.SGIP_1_3);
     }
 
-
-    public ByteBuf getContent() {
-        return content;
-    }
-
-    public void setContent(ByteBuf content) {
-        this.content = content;
-    }
 
     public SgipHeader getHeader() {
-        return header;
+        return this.header;
+    }
+
+    @Override
+    public SgipVersion protocolVersion() {
+        return this.version;
+    }
+
+    @Override
+    public SgipMessage setProtocolVersion(SgipVersion protocolVersion) {
+        this.version = protocolVersion;
+        return this;
+    }
+
+    @Override
+    public SgipHeader header() {
+        return this.header;
     }
 
     @Override
@@ -52,11 +55,25 @@ public abstract class DefaultSgipMessage implements SgipMessage {
         return this;
     }
 
-    public SgipVersion getVersion() {
-        return version;
+    @Override
+    public SgipContent sgipContent() {
+        return this.sgipContent;
     }
 
-    public void setVersion(SgipVersion version) {
-        this.version = version;
+    @Override
+    public SgipMessage setSgipContent(SgipContent sgipContent) {
+        this.sgipContent = sgipContent;
+        return this;
     }
+
+    @Override
+    public DecoderResult decoderResult() {
+        return this.decoderResult;
+    }
+
+    @Override
+    public void setDecoderResult(DecoderResult result) {
+        this.decoderResult = result;
+    }
+
 }

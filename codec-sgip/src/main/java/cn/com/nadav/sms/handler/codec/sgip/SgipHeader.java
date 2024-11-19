@@ -2,9 +2,9 @@ package cn.com.nadav.sms.handler.codec.sgip;
 
 public interface SgipHeader {
 
-    int getMessageLength();
+    long getMessageLength();
 
-    void setMessageLength(int messageLength);
+    void setMessageLength(long messageLength);
 
     int getCommandId();
 
@@ -15,5 +15,10 @@ public interface SgipHeader {
     void setSequenceNumber(SgipSequenceNumber sequenceNumber);
 
     int getHeaderLength();
+
+    void setHeaderLength(int headerLength);
+
+    long getContentLength();
+
 
 }

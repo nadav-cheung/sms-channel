@@ -1,8 +1,15 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+/**
+ * sgip请求
+ * method
+ *
+ */
 public interface SgipRequest extends SgipMessage {
 
-    SgipMethod getSgipMethod();
+    SgipOpCode getSgipOpCode();
+
+    SgipRequest setSgipMethod(SgipOpCode sgipOpCode);
 
     Object attachment();
 
@@ -10,9 +17,8 @@ public interface SgipRequest extends SgipMessage {
 
     int getCommandId();
 
-    SgipMessage setCommandId(int commandId);
+    SgipRequest setCommandId(int commandId);
 
-    SgipMessage setSgipMethod(SgipMethod sgipMethod);
 
 
 }

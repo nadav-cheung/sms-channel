@@ -1,0 +1,49 @@
+package cn.com.nadav.sms.handler.codec.sgip;
+
+import io.netty.buffer.ByteBuf;
+
+public class SgipRequestUtil {
+
+
+
+
+
+    static SgipRequest decodeSgipRequest(SgipContentCodecFactory factory, ByteBuf buf, SgipRequestFactory supplier) throws Exception {
+        SgipRequest sgipRequest = newSgipMessageRequest(buf, supplier);
+        SgipContentCodec<? extends SgipContent> codec = factory.getCodec(sgipRequest.getSgipOpCode());
+        SgipContent sgipContent = codec.decodeSgipContent(buf);
+        sgipRequest.setSgipContent(sgipContent);
+        return sgipRequest;
+    }
+
+
+    public interface SgipRequestFactory {
+        SgipRequest newSgipRequest(SgipOpCode sgipOpCode, SgipHeader sgipHeader);
+    }
+
+
+    private static SgipHeader decodeHeader(ByteBuf frame) {
+
+        // 将一个完整的消息帧解码成消息
+        long messageLength = frame.readUnsignedInt();
+        int commandId = frame.readInt();
+        int nodeId = frame.readInt();
+        int timestamp = frame.readInt();
+        int sequenceId = frame.readInt();
+
+        SgipHeader sgipHeader = new DefaultSgipHeader();
+        sgipHeader.setMessageLength(messageLength);
+        sgipHeader.setCommandId(commandId);
+        SgipSequenceNumber sgipSequenceNumber = new DefaultSgipSequenceNumber(nodeId, timestamp, sequenceId);
+        sgipHeader.setSequenceNumber(sgipSequenceNumber);
+        return sgipHeader;
+    }
+
+
+    private static SgipRequest newSgipMessageRequest(ByteBuf frame, SgipRequestFactory supplier) throws Exception {
+        SgipHeader sgipHeader = decodeHeader(frame);
+        SgipOpCode sgipOpCode = SgipOpCode.valueOf(sgipHeader.getCommandId());
+        return supplier.newSgipRequest(sgipOpCode, sgipHeader);
+    }
+
+}

@@ -1,16 +1,23 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
-import io.netty.buffer.ByteBuf;
-
 public class SgipBindContent extends AbstractSgipContent {
 
     private int loginType;
+
     private String loginName;
+
     private String password;
+
     private String reserve;
 
-    public SgipBindContent(ByteBuf content) {
-        super(content);
+    public SgipBindContent() {
+    }
+
+    public SgipBindContent(int loginType, String loginName, String password, String reserve) {
+        this.loginType = loginType;
+        this.loginName = loginName;
+        this.password = password;
+        this.reserve = reserve;
     }
 
     public int getLoginType() {
