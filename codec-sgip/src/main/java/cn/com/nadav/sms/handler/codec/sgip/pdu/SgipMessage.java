@@ -1,4 +1,4 @@
-package cn.com.nadav.sms.handler.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
 import io.netty.handler.codec.DecoderResultProvider;
 
@@ -8,10 +8,6 @@ import io.netty.handler.codec.DecoderResultProvider;
  * header
  */
 public interface SgipMessage extends DecoderResultProvider {
-
-    SgipVersion protocolVersion();
-
-    SgipMessage setProtocolVersion(SgipVersion protocolVersion);
 
     SgipHeader header();
 

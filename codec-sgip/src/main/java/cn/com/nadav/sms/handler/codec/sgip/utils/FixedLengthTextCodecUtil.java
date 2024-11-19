@@ -1,4 +1,4 @@
-package cn.com.nadav.sms.handler.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip.utils;
 
 
 import io.netty.buffer.ByteBuf;

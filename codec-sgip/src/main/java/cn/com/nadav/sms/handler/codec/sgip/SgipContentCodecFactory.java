@@ -1,5 +1,7 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipContent;
+
 import java.util.HashMap;
 import java.util.Map;
 

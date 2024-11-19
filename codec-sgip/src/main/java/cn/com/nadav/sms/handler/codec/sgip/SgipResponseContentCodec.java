@@ -1,5 +1,7 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipResponseContent;
+import cn.com.nadav.sms.handler.codec.sgip.utils.FixedLengthTextCodecUtil;
 import io.netty.buffer.ByteBuf;
 
 public class SgipResponseContentCodec implements SgipContentCodec<SgipResponseContent> {

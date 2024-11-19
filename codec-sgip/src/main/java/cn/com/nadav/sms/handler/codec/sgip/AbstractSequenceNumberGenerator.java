@@ -1,5 +1,7 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipSequenceNumber;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.time.LocalDateTime;

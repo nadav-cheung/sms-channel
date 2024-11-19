@@ -4,43 +4,41 @@ import static io.netty.util.internal.ObjectUtil.checkNotNull;
 
 public class SgipOpCode implements Comparable<SgipOpCode> {
 
-    public static final SgipOpCode BIND = new SgipOpCode(SgipConstants.BIND, "BIND");
+    public static final SgipOpCode BIND = new SgipOpCode(SgipConstants.BIND, SgipConstants.BIND_RESP, "BIND");
 
-    public static final SgipOpCode BIND_RESP = new SgipOpCode(SgipConstants.BIND_RESP, "BIND_RESP");
+    public static final SgipOpCode BIND_RESP = new SgipOpCode(SgipConstants.BIND_RESP, SgipConstants.BIND, "BIND_RESP");
 
-    public static final SgipOpCode UNBIND = new SgipOpCode(SgipConstants.UNBIND, "UNBIND");
+    public static final SgipOpCode UNBIND = new SgipOpCode(SgipConstants.UNBIND, SgipConstants.UNBIND_RESP, "UNBIND");
 
-    public static final SgipOpCode UNBIND_RESP = new SgipOpCode(SgipConstants.UNBIND_RESP, "UNBIND_RESP");
+    public static final SgipOpCode UNBIND_RESP = new SgipOpCode(SgipConstants.UNBIND_RESP, SgipConstants.UNBIND, "UNBIND_RESP");
 
-    public static final SgipOpCode SUBMIT = new SgipOpCode(SgipConstants.SUBMIT, "SUBMIT");
+    public static final SgipOpCode SUBMIT = new SgipOpCode(SgipConstants.SUBMIT, SgipConstants.SUBMIT_RESP, "SUBMIT");
 
-    public static final SgipOpCode SUBMIT_RESP = new SgipOpCode(SgipConstants.SUBMIT_RESP, "SUBMIT_RESP");
+    public static final SgipOpCode SUBMIT_RESP = new SgipOpCode(SgipConstants.SUBMIT_RESP, SgipConstants.SUBMIT, "SUBMIT_RESP");
 
-    public static final SgipOpCode DELIVER = new SgipOpCode(SgipConstants.DELIVER, "DELIVER");
+    public static final SgipOpCode DELIVER = new SgipOpCode(SgipConstants.DELIVER, SgipConstants.DELIVER_RESP, "DELIVER");
 
-    public static final SgipOpCode DELIVER_RESP = new SgipOpCode(SgipConstants.DELIVER_RESP, "DELIVER_RESP");
+    public static final SgipOpCode DELIVER_RESP = new SgipOpCode(SgipConstants.DELIVER_RESP, SgipConstants.DELIVER, "DELIVER_RESP");
 
-    public static final SgipOpCode REPORT = new SgipOpCode(SgipConstants.REPORT, "REPORT");
+    public static final SgipOpCode REPORT = new SgipOpCode(SgipConstants.REPORT, SgipConstants.REPORT_RESP, "REPORT");
 
-    public static final SgipOpCode REPORT_RESP = new SgipOpCode(SgipConstants.REPORT_RESP, "REPORT_RESP");
+    public static final SgipOpCode REPORT_RESP = new SgipOpCode(SgipConstants.REPORT_RESP, SgipConstants.REPORT, "REPORT_RESP");
 
 
     private final int code;
+
+    private final int pair;
 
     private final String name;
 
     private String text;
 
 
-    public SgipOpCode(int code) {
-        this(code, "UNKNOWN");
-    }
-
-    public SgipOpCode(int code, String name) {
+    public SgipOpCode(int code, int pair, String name) {
         this.code = code;
+        this.pair = pair;
         this.name = checkNotNull(name, "name");
     }
-
 
     /**
      * Returns the {@link SgipOpCode} instance of the specified byte value.
@@ -78,5 +76,22 @@ public class SgipOpCode implements Comparable<SgipOpCode> {
     @Override
     public int compareTo(SgipOpCode o) {
         return 0;
+    }
+
+
+    public int getCode() {
+        return code;
+    }
+
+    public int getPair() {
+        return pair;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getText() {
+        return text;
     }
 }

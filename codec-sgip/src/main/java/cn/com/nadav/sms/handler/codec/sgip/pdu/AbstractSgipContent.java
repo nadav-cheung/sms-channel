@@ -1,4 +1,4 @@
-package cn.com.nadav.sms.handler.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
 import io.netty.handler.codec.DecoderResult;
 

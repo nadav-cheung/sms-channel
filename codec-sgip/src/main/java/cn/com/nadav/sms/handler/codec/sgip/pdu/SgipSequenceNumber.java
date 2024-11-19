@@ -1,4 +1,4 @@
-package cn.com.nadav.sms.handler.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
 public interface SgipSequenceNumber {
 
@@ -7,5 +7,7 @@ public interface SgipSequenceNumber {
     int getCurrentTimestamp();
 
     int getSequenceId();
+
+    SgipSequenceNumber copy();
 
 }

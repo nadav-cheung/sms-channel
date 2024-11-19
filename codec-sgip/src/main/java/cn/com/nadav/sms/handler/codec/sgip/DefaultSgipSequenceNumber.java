@@ -1,5 +1,7 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipSequenceNumber;
+
 public class DefaultSgipSequenceNumber implements SgipSequenceNumber {
 
     private final int nodeId;
@@ -31,7 +33,10 @@ public class DefaultSgipSequenceNumber implements SgipSequenceNumber {
     }
 
 
-
+    @Override
+    public SgipSequenceNumber copy() {
+        return new DefaultSgipSequenceNumber(nodeId, currentTimestamp, sequenceId);
+    }
 
 
 }

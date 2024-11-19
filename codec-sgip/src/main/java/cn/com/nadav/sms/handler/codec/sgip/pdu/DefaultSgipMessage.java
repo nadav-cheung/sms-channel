@@ -1,4 +1,4 @@
-package cn.com.nadav.sms.handler.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
 import io.netty.handler.codec.DecoderResult;
 
@@ -6,26 +6,18 @@ public class DefaultSgipMessage implements SgipMessage {
 
     private DecoderResult decoderResult = DecoderResult.SUCCESS;
 
-    private SgipVersion version;
-
     private SgipHeader header;
 
     private SgipContent sgipContent;
 
 
-    public DefaultSgipMessage(SgipHeader header, SgipVersion version) {
-        this.header = header;
-        this.version = version;
-    }
-
-
     public DefaultSgipMessage(SgipHeader header) {
-        this(header, SgipVersion.SGIP_1_3);
+        this.header = header;
     }
 
 
     public DefaultSgipMessage() {
-        this(new DefaultSgipHeader(), SgipVersion.SGIP_1_3);
+        this(new DefaultSgipHeader());
     }
 
 
@@ -33,16 +25,6 @@ public class DefaultSgipMessage implements SgipMessage {
         return this.header;
     }
 
-    @Override
-    public SgipVersion protocolVersion() {
-        return this.version;
-    }
-
-    @Override
-    public SgipMessage setProtocolVersion(SgipVersion protocolVersion) {
-        this.version = protocolVersion;
-        return this;
-    }
 
     @Override
     public SgipHeader header() {

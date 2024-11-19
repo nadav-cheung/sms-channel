@@ -1,4 +1,6 @@
-package cn.com.nadav.sms.handler.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip.pdu;
+
+import cn.com.nadav.sms.handler.codec.sgip.SgipConstants;
 
 public class DefaultSgipHeader implements SgipHeader {
 

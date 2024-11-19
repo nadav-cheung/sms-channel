@@ -1,4 +1,6 @@
-package cn.com.nadav.sms.handler.codec.sgip;
+package cn.com.nadav.sms.handler.codec.sgip.pdu;
+
+import cn.com.nadav.sms.handler.codec.sgip.SgipOpCode;
 
 public class DefaultSgipRequest extends DefaultSgipMessage implements SgipRequest {
 
@@ -32,15 +34,26 @@ public class DefaultSgipRequest extends DefaultSgipMessage implements SgipReques
     }
 
     @Override
-    public SgipRequest setCommandId(int commandId) {
-        getHeader().setCommandId(commandId);
-        return this;
+    public SgipSequenceNumber getSequenceNumber() {
+        return null;
     }
 
     @Override
-    public SgipRequest setSgipMethod(SgipOpCode sgipOpCode) {
+    public SgipResponse getResponse() {
+        SgipHeader header = getHeader();
+        SgipResponse response = new DefaultSgipResponse();
+        // 序号相同
+        response.header().setSequenceNumber(header.getSequenceNumber().copy());
+        response.header().setCommandId(sgipOpCode.getPair());
+        return response;
+    }
+
+
+    @Override
+    public SgipRequest setSgipOpCode(SgipOpCode sgipOpCode) {
         this.sgipOpCode = sgipOpCode;
         return this;
     }
+
 
 }
