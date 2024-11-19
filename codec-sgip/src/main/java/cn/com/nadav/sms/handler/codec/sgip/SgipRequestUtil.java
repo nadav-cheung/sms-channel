@@ -1,11 +1,9 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.handler.codec.DecoderException;
 
 public class SgipRequestUtil {
-
-
-
 
 
     static SgipRequest decodeSgipRequest(SgipContentCodecFactory factory, ByteBuf buf, SgipRequestFactory supplier) throws Exception {
@@ -39,10 +37,24 @@ public class SgipRequestUtil {
         return sgipHeader;
     }
 
+    private static void encodeHeader(SgipHeader header, ByteBuf out) {
+
+        // 提取低32位
+        int lower32Bits = (int) (header.getMessageLength() & 0xFFFFFFFFL);
+        out.writeInt(lower32Bits);
+        out.writeInt(header.getCommandId());
+        out.writeInt(header.getSequenceNumber().getNodeId());
+        out.writeInt(header.getSequenceNumber().getCurrentTimestamp());
+        out.writeInt(header.getSequenceNumber().getSequenceId());
+    }
+
 
     private static SgipRequest newSgipMessageRequest(ByteBuf frame, SgipRequestFactory supplier) throws Exception {
         SgipHeader sgipHeader = decodeHeader(frame);
         SgipOpCode sgipOpCode = SgipOpCode.valueOf(sgipHeader.getCommandId());
+        if (sgipOpCode == null) {
+            throw new DecoderException("Unknown SGIP opcode: " + sgipHeader.getCommandId());
+        }
         return supplier.newSgipRequest(sgipOpCode, sgipHeader);
     }
 

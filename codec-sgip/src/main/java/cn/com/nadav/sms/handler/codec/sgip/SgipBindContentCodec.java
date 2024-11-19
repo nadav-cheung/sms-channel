@@ -16,10 +16,10 @@ public class SgipBindContentCodec implements SgipContentCodec<SgipBindContent> {
         int loginType = in.readInt();
 
         // 读取 Login Name
-        String loginName = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.LOGIN_NAME_LENGTH);
+        String loginName = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.BIND_NAME_LENGTH);
 
         // 读取 Login Password
-        String loginPassword = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.LOGIN_PASSWORD_LENGTH);
+        String loginPassword = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.BIND_PASSWORD_LENGTH);
 
         // 读取 Reserve
         String reserve = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.RESERVE_LENGTH);
@@ -35,10 +35,10 @@ public class SgipBindContentCodec implements SgipContentCodec<SgipBindContent> {
         out.writeInt(msg.getLoginType());
 
         // 写入 Login Name
-        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getLoginName(), SgipConstants.LOGIN_NAME_LENGTH);
+        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getLoginName(), SgipConstants.BIND_NAME_LENGTH);
 
         // 写入 Login Password
-        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getPassword(), SgipConstants.LOGIN_PASSWORD_LENGTH);
+        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getPassword(), SgipConstants.BIND_PASSWORD_LENGTH);
 
         // 写入 Reserve
         FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getReserve(), SgipConstants.RESERVE_LENGTH);
