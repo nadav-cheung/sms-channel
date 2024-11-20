@@ -1,7 +1,11 @@
 package cn.com.nadav.sms.handler.codec.sgip.utils;
 
-import cn.com.nadav.sms.handler.codec.sgip.*;
-import cn.com.nadav.sms.handler.codec.sgip.pdu.*;
+import cn.com.nadav.sms.handler.codec.sgip.SgipContentCodec;
+import cn.com.nadav.sms.handler.codec.sgip.SgipContentCodecFactory;
+import cn.com.nadav.sms.handler.codec.sgip.SgipOpCode;
+import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipContent;
+import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipHeader;
+import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipRequest;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.DecoderException;
 
@@ -23,24 +27,16 @@ public class SgipRequestUtil {
 
 
     public static void encodeSgipRequest(SgipContentCodecFactory factory, SgipRequest request, ByteBuf out) throws Exception {
-        encodeHeader(request.header(), out);
+        SgipHeaderUtil.encodeHeader(request.header(), out);
         SgipOpCode sgipOpCode = request.getSgipOpCode();
         SgipContentCodec<SgipContent> codec = factory.getCodec(sgipOpCode);
         SgipContent sgipContent = request.sgipContent();
-        codec.encodeSgipContent(sgipContent,out);
-    }
-
-
-    private static void encodeHeader(SgipHeader header, ByteBuf out) {
-        out.writeInt(header.getCommandId());
-        out.writeInt(header.getSequenceNumber().getNodeId());
-        out.writeInt(header.getSequenceNumber().getCurrentTimestamp());
-        out.writeInt(header.getSequenceNumber().getSequenceId());
+        codec.encodeSgipContent(sgipContent, out);
     }
 
 
     private static SgipRequest newSgipMessageRequest(ByteBuf frame, SgipRequestFactory supplier) throws Exception {
-        SgipHeader sgipHeader = decodeHeader(frame);
+        SgipHeader sgipHeader = SgipHeaderUtil.decodeHeader(frame);
         SgipOpCode sgipOpCode = SgipOpCode.valueOf(sgipHeader.getCommandId());
         if (sgipOpCode == null) {
             throw new DecoderException("Unknown SGIP opcode: " + sgipHeader.getCommandId());
@@ -48,21 +44,5 @@ public class SgipRequestUtil {
         return supplier.newSgipRequest(sgipOpCode, sgipHeader);
     }
 
-
-    private static SgipHeader decodeHeader(ByteBuf frame) {
-
-        long messageLength = frame.readUnsignedInt();
-        int commandId = frame.readInt();
-        int nodeId = frame.readInt();
-        int timestamp = frame.readInt();
-        int sequenceId = frame.readInt();
-
-        SgipHeader sgipHeader = new DefaultSgipHeader();
-        sgipHeader.setMessageLength(messageLength);
-        sgipHeader.setCommandId(commandId);
-        SgipSequenceNumber sgipSequenceNumber = new DefaultSgipSequenceNumber(nodeId, timestamp, sequenceId);
-        sgipHeader.setSequenceNumber(sgipSequenceNumber);
-        return sgipHeader;
-    }
 
 }

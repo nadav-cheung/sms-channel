@@ -10,7 +10,7 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 public class SgipRequestDecoder extends LengthFieldBasedFrameDecoder {
 
-    public static final SgipContentCodecFactory factory = SgipContentCodecFactory.INSTANCE;
+    public static final SgipContentCodecFactory factory = SgipContentCodecFactory.getInstance();
 
 
     public SgipRequestDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength) {
@@ -29,7 +29,7 @@ public class SgipRequestDecoder extends LengthFieldBasedFrameDecoder {
                 new SgipRequestUtil.SgipRequestFactory() {
                     @Override
                     public SgipRequest newSgipRequest(SgipOpCode sgipOpCode, SgipHeader sgipHeader) {
-                        return new DefaultSgipRequest(sgipHeader, sgipOpCode);
+                        return new DefaultSgipRequest(sgipHeader);
                     }
                 });
     }

@@ -1,5 +1,6 @@
 package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
+import cn.com.nadav.sms.handler.codec.sgip.SgipOpCode;
 import io.netty.handler.codec.DecoderResultProvider;
 
 /**
@@ -16,5 +17,7 @@ public interface SgipMessage extends DecoderResultProvider {
     SgipContent sgipContent();
 
     SgipMessage setSgipContent(SgipContent sgipContent);
+
+    SgipOpCode getSgipOpCode();
 
 }

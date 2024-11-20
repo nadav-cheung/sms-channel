@@ -1,5 +1,6 @@
 package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
+import cn.com.nadav.sms.handler.codec.sgip.SgipOpCode;
 import io.netty.handler.codec.DecoderResult;
 
 public class DefaultSgipMessage implements SgipMessage {
@@ -58,4 +59,12 @@ public class DefaultSgipMessage implements SgipMessage {
         this.decoderResult = result;
     }
 
+
+    @Override
+    public SgipOpCode getSgipOpCode() {
+        if (this.header == null) {
+            return null;
+        }
+        return SgipOpCode.valueOf(header.getCommandId());
+    }
 }

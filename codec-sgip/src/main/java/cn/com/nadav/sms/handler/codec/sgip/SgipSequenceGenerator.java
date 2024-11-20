@@ -17,7 +17,7 @@ public class SgipSequenceGenerator {
 
     private final int nodeId; // 命令源节点编号
 
-    private final int maxSequence = 0xFFFFFFFF; // 自增序列的最大值
+    private static final int MAX_SEQUENCE = 0xFFFFFFFF; // 自增序列的最大值
 
     // 保存时间戳和当前序列号范围的状态
     private final AtomicReference<SequenceState> state;
@@ -49,7 +49,7 @@ public class SgipSequenceGenerator {
             } else {
                 // 在同一时间戳下尝试分配序列号
                 int currentSeqId = currentState.sequenceId;
-                if (currentSeqId < maxSequence) {
+                if (currentSeqId < MAX_SEQUENCE) {
                     SequenceState newState = new SequenceState(currentTimestamp, currentSeqId + 1);
                     if (state.compareAndSet(currentState, newState)) {
                         return createSequence(currentState, currentSeqId);

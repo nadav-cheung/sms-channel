@@ -8,10 +8,6 @@ import cn.com.nadav.sms.handler.codec.sgip.SgipOpCode;
  */
 public interface SgipRequest extends SgipMessage {
 
-    SgipOpCode getSgipOpCode();
-
-    SgipRequest setSgipOpCode(SgipOpCode sgipOpCode);
-
     Object attachment();
 
     void setAttachment(Object attachment);
@@ -21,5 +17,7 @@ public interface SgipRequest extends SgipMessage {
     SgipSequenceNumber getSequenceNumber();
 
     SgipResponse getResponse();
+
+    SgipOpCode getSgipOpCode();
 
 }

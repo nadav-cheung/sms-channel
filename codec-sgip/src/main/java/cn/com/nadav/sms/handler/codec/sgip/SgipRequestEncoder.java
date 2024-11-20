@@ -8,7 +8,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 
 public class SgipRequestEncoder extends MessageToByteEncoder<SgipRequest> {
 
-    public static final SgipContentCodecFactory factory = SgipContentCodecFactory.INSTANCE;
+    public static final SgipContentCodecFactory factory = SgipContentCodecFactory.getInstance();
 
 
     @Override
