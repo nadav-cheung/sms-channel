@@ -21,7 +21,6 @@ public class SgipRequestDecoder extends LengthFieldBasedFrameDecoder {
     protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
         // 一个完整的frame
         ByteBuf frame = (ByteBuf) super.decode(ctx, in);
-
         if (frame == null) {
             return null;
         }
