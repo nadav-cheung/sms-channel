@@ -1,5 +1,10 @@
 package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
+/**
+ * Represents the content of an SGIP (Short Message Gateway Interface Protocol) bind message.
+ * This class encapsulates the necessary information for an SGIP bind operation, including
+ * login type, login name, password, and a reserved field.
+ */
 public class SgipBindContent extends AbstractSgipContent {
 
     private int loginType;

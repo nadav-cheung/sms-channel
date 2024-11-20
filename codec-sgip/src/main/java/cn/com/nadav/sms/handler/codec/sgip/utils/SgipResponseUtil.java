@@ -9,6 +9,11 @@ import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipResponse;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.DecoderException;
 
+/**
+ * Utility class for decoding SGIP (Short Message Gateway Interface Protocol) responses.
+ * This class provides methods to decode an SGIP response from a byte buffer using a specified
+ * codec factory and response factory.
+ */
 public class SgipResponseUtil {
 
 

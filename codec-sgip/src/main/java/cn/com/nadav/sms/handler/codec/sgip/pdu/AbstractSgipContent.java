@@ -2,9 +2,14 @@ package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
 import io.netty.handler.codec.DecoderResult;
 
+/**
+ * Abstract base class for SGIP content. This class provides a common implementation
+ * for handling the decoder result, and serves as a foundation for more specific
+ * SGIP content types.
+ */
 public abstract class AbstractSgipContent implements SgipContent {
 
-    private DecoderResult decoderResult = DecoderResult.SUCCESS;
+    private DecoderResult decoderResult = initializeDecoderResult();
 
     public AbstractSgipContent() {
     }
@@ -18,5 +23,7 @@ public abstract class AbstractSgipContent implements SgipContent {
         this.decoderResult = result;
     }
 
-
+    private DecoderResult initializeDecoderResult() {
+        return DecoderResult.SUCCESS;
+    }
 }

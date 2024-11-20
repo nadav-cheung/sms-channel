@@ -4,9 +4,9 @@ import cn.com.nadav.sms.handler.codec.sgip.SgipOpCode;
 import io.netty.handler.codec.DecoderResultProvider;
 
 /**
- * sgipMessage
- * version
- * header
+ * Interface representing an SGIP (Short Message Gateway Interface Protocol) message.
+ * Provides methods to access and modify the header and content of the message.
+ * Also allows retrieval of the operation code specific to the SGIP protocol.
  */
 public interface SgipMessage extends DecoderResultProvider {
 

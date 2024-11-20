@@ -1,5 +1,9 @@
 package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
+/**
+ * Represents the content of an SGIP (Short Message Gateway Interface Protocol) response message.
+ * This class contains the result and a reserve field which are specific to the SGIP response.
+ */
 public class SgipResponseContent extends AbstractSgipContent {
 
     private int result = 0;

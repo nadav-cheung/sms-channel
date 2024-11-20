@@ -1,7 +1,9 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
 /**
- * 保证分部署场景下唯一
+ * This class generates sequence numbers uniquely based on the provided data center ID
+ * and machine ID. It extends the {@code AbstractSequenceNumberGenerator} and implements
+ * the sequence generation logic specific to a combination of data center and machine IDs.
  */
 public class DatacenterMachineSequenceNumberGenerator extends AbstractSequenceNumberGenerator {
 

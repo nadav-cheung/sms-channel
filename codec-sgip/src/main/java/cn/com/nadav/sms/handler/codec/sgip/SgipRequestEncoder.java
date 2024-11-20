@@ -6,6 +6,11 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
+/**
+ * Encodes an SGIP (Short Message Gateway Interface Protocol) request into a ByteBuf.
+ * The encoded message includes a 4-byte length prefix followed by the SGIP request content.
+ * This class extends the Netty framework's `MessageToByteEncoder` to provide encoding functionality for SGIP requests.
+ */
 public class SgipRequestEncoder extends MessageToByteEncoder<SgipRequest> {
 
     public static final SgipContentCodecFactory factory = SgipContentCodecFactory.getInstance();

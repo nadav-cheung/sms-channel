@@ -5,6 +5,11 @@ import io.netty.util.CharsetUtil;
 import static io.netty.util.internal.ObjectUtil.checkNonEmptyAfterTrim;
 import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
 
+/**
+ * Represents the version of the SGIP (Short Message Gateway Interface Protocol).
+ * This class provides functionalities to define and compare different versions of SGIP.
+ * It supports major and minor versioning and maintains protocol details.
+ */
 public class SgipVersion implements Comparable<SgipVersion> {
 
 

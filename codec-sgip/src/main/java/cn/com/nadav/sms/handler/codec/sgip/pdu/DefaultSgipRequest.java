@@ -20,7 +20,7 @@ public class DefaultSgipRequest extends DefaultSgipMessage implements SgipReques
 
     @Override
     public int getCommandId() {
-        return getHeader().getCommandId();
+        return header().getCommandId();
     }
 
     @Override
@@ -30,6 +30,11 @@ public class DefaultSgipRequest extends DefaultSgipMessage implements SgipReques
 
     @Override
     public SgipResponse getResponse() {
+        return generateResponseFromRequest();
+    }
+
+
+    private SgipResponse generateResponseFromRequest() {
         SgipHeader headerCopyFromRequest = new DefaultSgipHeader();
         headerCopyFromRequest.setCommandId(getSgipOpCode().getPair());
         headerCopyFromRequest.setSequenceNumber(getSequenceNumber().copy());

@@ -6,6 +6,10 @@ import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipHeader;
 import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipSequenceNumber;
 import io.netty.buffer.ByteBuf;
 
+/**
+ * Utility class for encoding and decoding SGIP (Short Message Gateway Interface Protocol) headers.
+ * This class provides methods to convert SGIP headers to and from a byte buffer representation.
+ */
 public class SgipHeaderUtil {
 
     public static void encodeHeader(SgipHeader header, ByteBuf out) {

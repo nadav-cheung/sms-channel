@@ -6,6 +6,11 @@ import io.netty.handler.codec.DecoderException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Factory class for creating and managing SGIP content codecs.
+ * This factory maintains a registry of codecs for various SGIP operation codes,
+ * providing a centralized way to retrieve the appropriate codec for encoding or decoding SGIP messages.
+ */
 public class SgipContentCodecFactory {
 
     private static final Map<SgipOpCode, SgipContentCodec<? extends SgipContent>> CODEC_MAP = new HashMap<>();

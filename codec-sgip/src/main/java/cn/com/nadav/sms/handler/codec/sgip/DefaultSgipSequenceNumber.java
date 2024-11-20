@@ -2,6 +2,11 @@ package cn.com.nadav.sms.handler.codec.sgip;
 
 import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipSequenceNumber;
 
+/**
+ * The DefaultSgipSequenceNumber class implements the SgipSequenceNumber interface.
+ * This class represents a sequence number in an SGIP message, which consists of a node ID,
+ * a timestamp, and a sequence ID.
+ */
 public class DefaultSgipSequenceNumber implements SgipSequenceNumber {
 
     private final int nodeId;

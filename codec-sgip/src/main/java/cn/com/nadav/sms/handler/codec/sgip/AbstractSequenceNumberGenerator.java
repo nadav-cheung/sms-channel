@@ -2,11 +2,16 @@ package cn.com.nadav.sms.handler.codec.sgip;
 
 import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipSequenceNumber;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * Abstract base class for generating sequence numbers. This class defines the common structure
+ * and workflow for generating sequence numbers while allowing subclasses to provide specific
+ * implementations for generating the sequence ID and defining the initial sequence ID.
+ */
 public abstract class AbstractSequenceNumberGenerator implements SequenceNumberGenerator {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MMddHHmmss");

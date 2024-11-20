@@ -5,6 +5,12 @@ import io.netty.buffer.ByteBuf;
 
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Utility class for handling fixed-length text encoding and decoding.
+ * This class provides methods to write fixed-length strings to a ByteBuf
+ * and read fixed-length strings from a ByteBuf, with specific handling
+ * for padding and trimming null characters.
+ */
 public class FixedLengthTextCodecUtil {
 
     private FixedLengthTextCodecUtil() {

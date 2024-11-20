@@ -8,8 +8,18 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
+/**
+ * The SgipRequestDecoder class extends the LengthFieldBasedFrameDecoder and is responsible for
+ * decoding incoming SGIP (Short Message Gateway Interface Protocol) request frames.
+ * It utilizes the SgipContentCodecFactory to decode the content of the SGIP messages.
+ */
 public class SgipRequestDecoder extends LengthFieldBasedFrameDecoder {
 
+    /**
+     * A static final instance of the SgipContentCodecFactory used for creating and managing SGIP content codecs.
+     * This factory provides a centralized way to retrieve the appropriate codec for encoding or decoding SGIP messages
+     * based on the SGIP operation codes.
+     */
     public static final SgipContentCodecFactory factory = SgipContentCodecFactory.getInstance();
 
 

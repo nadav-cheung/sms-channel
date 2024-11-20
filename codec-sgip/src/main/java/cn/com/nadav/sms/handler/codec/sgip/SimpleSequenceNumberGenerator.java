@@ -1,5 +1,9 @@
 package cn.com.nadav.sms.handler.codec.sgip;
 
+/**
+ * A simple implementation of the AbstractSequenceNumberGenerator that generates
+ * sequential numbers starting from 0.
+ */
 public class SimpleSequenceNumberGenerator extends AbstractSequenceNumberGenerator {
 
 

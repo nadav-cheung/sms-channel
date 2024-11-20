@@ -4,6 +4,11 @@ import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipBindContent;
 import cn.com.nadav.sms.handler.codec.sgip.utils.FixedLengthTextCodecUtil;
 import io.netty.buffer.ByteBuf;
 
+/**
+ * Implements the SgipContentCodec interface for encoding and decoding SgipBindContent messages.
+ * This class handles the specific format of SGIP bind messages, converting between binary
+ * data in a ByteBuf and SgipBindContent objects.
+ */
 public class SgipBindContentCodec implements SgipContentCodec<SgipBindContent> {
 
 

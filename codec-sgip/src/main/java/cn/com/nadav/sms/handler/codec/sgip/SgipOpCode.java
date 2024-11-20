@@ -2,6 +2,11 @@ package cn.com.nadav.sms.handler.codec.sgip;
 
 import static io.netty.util.internal.ObjectUtil.checkNotNull;
 
+/**
+ * Represents an operation code (OpCode) in the SGIP (Short Message Gateway Interface Protocol).
+ * This class contains constants for various SGIP operation codes and their corresponding response codes.
+ * It also provides utility methods to retrieve an instance of {@link SgipOpCode} based on a given code.
+ */
 public class SgipOpCode implements Comparable<SgipOpCode> {
 
     public static final SgipOpCode BIND = new SgipOpCode(SgipConstants.BIND, SgipConstants.BIND_RESP, "BIND");

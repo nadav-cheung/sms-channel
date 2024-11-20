@@ -9,6 +9,9 @@ import cn.com.nadav.sms.handler.codec.sgip.pdu.SgipRequest;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.DecoderException;
 
+/**
+ * Utility class for handling SGIP (Short Message Gateway Interface Protocol) requests.
+ */
 public class SgipRequestUtil {
 
 

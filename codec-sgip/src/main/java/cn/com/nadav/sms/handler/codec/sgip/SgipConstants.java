@@ -4,6 +4,9 @@ import io.netty.util.CharsetUtil;
 
 import java.nio.charset.Charset;
 
+/**
+ * Class holding constant values related to SGIP (Short Message Gateway Interface Protocol).
+ */
 public class SgipConstants {
 
 

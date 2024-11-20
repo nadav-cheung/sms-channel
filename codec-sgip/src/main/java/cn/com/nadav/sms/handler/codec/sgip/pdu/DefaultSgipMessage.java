@@ -4,28 +4,17 @@ import cn.com.nadav.sms.handler.codec.sgip.SgipOpCode;
 import io.netty.handler.codec.DecoderResult;
 
 public class DefaultSgipMessage implements SgipMessage {
-
     private DecoderResult decoderResult = DecoderResult.SUCCESS;
-
     private SgipHeader header;
-
     private SgipContent sgipContent;
-
 
     public DefaultSgipMessage(SgipHeader header) {
         this.header = header;
     }
 
-
     public DefaultSgipMessage() {
         this(new DefaultSgipHeader());
     }
-
-
-    public SgipHeader getHeader() {
-        return this.header;
-    }
-
 
     @Override
     public SgipHeader header() {
@@ -59,12 +48,12 @@ public class DefaultSgipMessage implements SgipMessage {
         this.decoderResult = result;
     }
 
-
     @Override
     public SgipOpCode getSgipOpCode() {
-        if (this.header == null) {
+        SgipHeader currentHeader = this.header;
+        if (currentHeader == null) {
             return null;
         }
-        return SgipOpCode.valueOf(header.getCommandId());
+        return SgipOpCode.valueOf(currentHeader.getCommandId());
     }
 }

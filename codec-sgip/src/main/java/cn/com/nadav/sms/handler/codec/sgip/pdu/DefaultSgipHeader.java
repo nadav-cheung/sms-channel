@@ -2,12 +2,16 @@ package cn.com.nadav.sms.handler.codec.sgip.pdu;
 
 import cn.com.nadav.sms.handler.codec.sgip.SgipConstants;
 
+/**
+ * Implementation of the SgipHeader interface, representing the header of an SGIP message.
+ * Provides methods to get and set the message length, command ID, and sequence number.
+ * Also calculates the content length of the message by subtracting the header length from the total message length.
+ */
 public class DefaultSgipHeader implements SgipHeader {
 
     protected long messageLength;
 
     protected int commandId;
-
 
     /**
      * 消息header长度
