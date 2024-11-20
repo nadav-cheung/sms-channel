@@ -30,12 +30,10 @@ public class DefaultSgipRequest extends DefaultSgipMessage implements SgipReques
 
     @Override
     public SgipResponse getResponse() {
-        SgipHeader header = getHeader();
-        SgipResponse response = new DefaultSgipResponse(header);
-        // 序号相同
-        response.header().setSequenceNumber(header.getSequenceNumber().copy());
-        response.header().setCommandId(getSgipOpCode().getPair());
-        return response;
+        SgipHeader headerCopyFromRequest = new DefaultSgipHeader();
+        headerCopyFromRequest.setCommandId(getSgipOpCode().getPair());
+        headerCopyFromRequest.setSequenceNumber(getSequenceNumber().copy());
+        return new DefaultSgipResponse(headerCopyFromRequest);
     }
 
 }
