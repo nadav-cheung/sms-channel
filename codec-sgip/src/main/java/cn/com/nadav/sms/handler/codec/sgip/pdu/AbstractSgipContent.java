@@ -26,4 +26,10 @@ public abstract class AbstractSgipContent implements SgipContent {
     private DecoderResult initializeDecoderResult() {
         return DecoderResult.SUCCESS;
     }
+
+    @Override
+    public Class<? extends SgipContent> getContentType() {
+        return getClass();
+    }
+
 }

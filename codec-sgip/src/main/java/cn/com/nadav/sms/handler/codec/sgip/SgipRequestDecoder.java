@@ -23,9 +23,10 @@ public class SgipRequestDecoder extends LengthFieldBasedFrameDecoder {
     public static final SgipContentCodecFactory factory = SgipContentCodecFactory.getInstance();
 
 
-    public SgipRequestDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength) {
-        super(maxFrameLength, lengthFieldOffset, lengthFieldLength);
+    public SgipRequestDecoder() {
+        super(8192, 0, 4, -4, 0, true);
     }
+
 
     @Override
     protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {

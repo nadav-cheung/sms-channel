@@ -80,7 +80,12 @@ public class SgipOpCode implements Comparable<SgipOpCode> {
 
     @Override
     public int compareTo(SgipOpCode o) {
-        return 0;
+        checkNotNull(o, "o");
+        if (this == o) {
+            return 0;
+        }
+
+        return code - o.code;
     }
 
 

@@ -9,5 +9,6 @@ import io.netty.handler.codec.DecoderResultProvider;
  */
 public interface SgipContent extends DecoderResultProvider {
 
+    Class<? extends SgipContent> getContentType();
 
 }
