@@ -14,6 +14,7 @@ public class SgipVersion implements Comparable<SgipVersion> {
 
 
     static final String SGIP_1_2_STRING = "SGIP/1.2";
+
     static final String SGIP_1_3_STRING = "SGIP/1.3";
 
     /**
@@ -23,10 +24,15 @@ public class SgipVersion implements Comparable<SgipVersion> {
 
 
     private final String protocolName;
+
     private final int majorVersion;
+
     private final int minorVersion;
+
     private final String text;
+
     private final boolean keepAliveDefault;
+
     private final byte[] bytes;
 
 

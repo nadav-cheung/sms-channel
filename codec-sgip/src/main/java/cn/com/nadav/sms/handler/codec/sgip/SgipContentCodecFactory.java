@@ -21,10 +21,14 @@ public class SgipContentCodecFactory {
 
     private static final SgipResponseContentCodec SGIP_RESPONSE_CONTENT_CODEC = new SgipResponseContentCodec();
 
+    private static final SgipSubmitContentCodec SGIP_SUBMIT_CONTENT_CODEC = new SgipSubmitContentCodec();
+
     static {
         registerCodec(SgipOpCode.BIND, SGIP_BIND_CONTENT_CODEC);
 
         registerCodec(SgipOpCode.UNBIND_RESP, SGIP_EMPTY_CONTENT_CODEC);
+
+        registerCodec(SgipOpCode.SUBMIT, SGIP_SUBMIT_CONTENT_CODEC);
 
 
         // response

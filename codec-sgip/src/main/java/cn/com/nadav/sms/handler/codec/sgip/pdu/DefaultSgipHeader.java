@@ -9,12 +9,18 @@ import cn.com.nadav.sms.handler.codec.sgip.SgipConstants;
  */
 public class DefaultSgipHeader implements SgipHeader {
 
+    /**
+     * message max byte size is 2KB
+     * just int kan do
+     */
     protected long messageLength;
 
     protected int commandId;
 
     /**
-     * 消息header长度
+     * Represents the length of the SGIP message header in bytes.
+     * This value is used to calculate the content length of the message
+     * by subtracting it from the total message length.
      */
     private int headerLength;
 

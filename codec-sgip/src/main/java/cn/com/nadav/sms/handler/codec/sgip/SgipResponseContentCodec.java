@@ -19,7 +19,7 @@ public class SgipResponseContentCodec implements SgipContentCodec<SgipResponseCo
         // 读取结果
         int result = in.readByte();
         // 读取 Reserve
-        String reserve = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.RESERVE_LENGTH);
+        String reserve = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.BIND_RESERVE_LENGTH);
 
 
         // 构造 LoginMessage 对象并添加到输出列表
@@ -33,7 +33,7 @@ public class SgipResponseContentCodec implements SgipContentCodec<SgipResponseCo
         out.writeByte(msg.getResult());
 
         // 写入 Reserve
-        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getReserve(), SgipConstants.RESERVE_LENGTH);
+        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getReserve(), SgipConstants.BIND_RESERVE_LENGTH);
     }
 
 

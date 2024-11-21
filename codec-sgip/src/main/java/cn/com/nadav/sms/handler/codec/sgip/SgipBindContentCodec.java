@@ -29,7 +29,7 @@ public class SgipBindContentCodec implements SgipContentCodec<SgipBindContent> {
         String loginPassword = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.BIND_PASSWORD_LENGTH);
 
         // 读取 Reserve
-        String reserve = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.RESERVE_LENGTH);
+        String reserve = FixedLengthTextCodecUtil.readFixedLengthString(in, SgipConstants.BIND_RESERVE_LENGTH);
 
 
         // 构造 LoginMessage 对象并添加到输出列表
@@ -48,7 +48,7 @@ public class SgipBindContentCodec implements SgipContentCodec<SgipBindContent> {
         FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getPassword(), SgipConstants.BIND_PASSWORD_LENGTH);
 
         // 写入 Reserve
-        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getReserve(), SgipConstants.RESERVE_LENGTH);
+        FixedLengthTextCodecUtil.writeFixedLengthString(out, msg.getReserve(), SgipConstants.BIND_RESERVE_LENGTH);
     }
 
 }
